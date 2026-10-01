@@ -1,0 +1,79 @@
+/* Before & After Interactive Slider */
+.comparison-container {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 1.25rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.comparison-image {
+    display: block;
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+}
+
+.comparison-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.comparison-overlay img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    max-width: none;
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+}
+
+.comparison-slider-handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 50%;
+    width: 4px;
+    background: #ffffff;
+    cursor: ew-resize;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+    transform: translateX(50%);
+}
+
+.comparison-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background: #E82574;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(232, 37, 116, 0.5);
+    font-size: 14px;
+}
+
+/* Testimonials Carousel */
+.testimonial-track {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+}
+
+/* Modal Backdrop Blur */
+.modal-blur {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
