@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Perfection Dental Clinic | د. عبد الرحمن الحامولي</title>
+    <meta name="description" content="عيادة The Perfection Dental Clinic - د. عبد الرحمن الحامولي أخصائي طب وتجميل وجراحة الفم والأسنان. احجز موعدك الآن.">
+
+    <!-- Google Fonts (Cairo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { cairo: ['Cairo', 'sans-serif'] },
+                    colors: {
+                        brand: {
+                            pink: '#E82574',
+                            'pink-dark': '#C71B5F',
+                            'pink-light': '#FCE7F0',
+                            navy: '#151928',
+                            'navy-light': '#1E2438'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- Tracking Script -->
+    <script src="js/tracking.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-['Cairo'] antialiased selection:bg-brand-pink selection:text-white">
+
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-full border-2 border-brand-pink p-1 bg-white flex items-center justify-center overflow-hidden shadow-sm">
+                        <!-- ضع مسار لوجو العيادة الواقعي هنا: assets/images/logo.png -->
+                        <img src="assets/images/logo.png" onerror="this.src='https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=150&auto=format&fit=crop&q=80'" alt="The Perfection Dental Clinic" class="w-full h-full object-cover rounded-full">
+                    </div>
+                    <div>
+                        <span class="block font-black text-xl text-brand-navy tracking-tight">The Perfection</span>
+                        <span class="block text-xs font-semibold text-brand-pink">Dental Clinic</span>
+                    </div>
+                </a>
+
+                <nav class="hidden md:flex items-center gap-8 font-semibold text-sm text-slate-600">
+                    <a href="#hero" class="text-brand-pink">الرئيسية</a>
+                    <a href="#services" class="hover:text-brand-pink transition-colors">خدماتنا</a>
+                    <a href="#reviews" class="hover:text-brand-pink transition-colors">آراء المرضى</a>
+                    <a href="#about" class="hover:text-brand-pink transition-colors">عن العيادة</a>
+                    <a href="#contact" class="hover:text-brand-pink transition-colors">تواصل معنا</a>
+                </nav>
+
+                <div class="flex items-center gap-3">
+                    <button onclick="openBookingModal()" class="flex items-center gap-2 bg-brand-pink hover:bg-brand-pink-dark text-white font-bold px-5 py-2.5 rounded-full shadow-lg shadow-brand-pink/25 hover:-translate-y-0.5 transition-all text-sm">
+                        <i class="fa-regular fa-calendar-check"></i>
+                        <span>احجز موعدك الآن</span>
+                    </button>
+                    <button id="mobileMenuBtn" class="md:hidden text-slate-700 text-xl p-2 rounded-lg hover:bg-slate-100">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-slate-200 px-6 py-4 space-y-3 font-semibold text-slate-700">
+            <a href="#hero" class="block hover:text-brand-pink">الرئيسية</a>
+            <a href="#services" class="block hover:text-brand-pink">خدماتنا</a>
+            <a href="#reviews" class="block hover:text-brand-pink">آراء المرضى</a>
+            <a href="#about" class="block hover:text-brand-pink">عن العيادة</a>
+            <a href="#contact" class="block hover:text-brand-pink">تواصل معنا</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative overflow-hidden pt-8 pb-16 lg:py-20 bg-gradient-to-b from-white via-pink-50/20 to-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 text-center lg:text-right space-y-6">
+                    <div class="inline-flex items-center gap-2 bg-brand-pink-light/70 text-brand-pink font-bold text-xs sm:text-sm px-4 py-2 rounded-full border border-brand-pink/20">
+                        <span class="w-2 h-2 rounded-full bg-brand-pink animate-ping"></span>
+                        عيادة متخصصة في طب وتجميل وجراحة الفم والأسنان
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-brand-navy leading-tight">
+                        ابتسامتك .. <br class="hidden sm:inline">
+                        <span class="text-brand-pink relative inline-block">
+                            بأيدٍ خبيرة
+                            <svg class="absolute -bottom-2 right-0 w-full" viewBox="0 0 250 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 9C60 3 190 3 247 9" stroke="#E82574" stroke-width="5" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl font-bold text-slate-700">
+                        The Perfection Dental Clinic - د. عبد الرحمن الحامولي
+                    </p>
+                    <p class="text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed text-base">
+                        رعاية متكاملة لصحة وجمال أسنانك في مكان واحد، بأحدث الأجهزة والتقنيات الطبية لضمان راحتك وابتسامة مثالية تدوم.
+                    </p>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                        <div class="bg-white border border-slate-200/80 rounded-2xl p-3 text-center shadow-sm">
+                            <i class="fa-solid fa-tooth text-brand-pink text-xl mb-1"></i>
+                            <h4 class="font-bold text-xs text-brand-navy">نتائج طبيعية</h4>
+                        </div>
+                        <div class="bg-white border border-slate-200/80 rounded-2xl p-3 text-center shadow-sm">
+                            <i class="fa-solid fa-shield-heart text-brand-pink text-xl mb-1"></i>
+                            <h4 class="font-bold text-xs text-brand-navy">راحة وأمان</h4>
+                        </div>
+                        <div class="bg-white border border-slate-200/80 rounded-2xl p-3 text-center shadow-sm">
+                            <i class="fa-solid fa-wand-magic-sparkles text-brand-pink text-xl mb-1"></i>
+                            <h4 class="font-bold text-xs text-brand-navy">أحدث التقنيات</h4>
+                        </div>
+                        <div class="bg-white border border-slate-200/80 rounded-2xl p-3 text-center shadow-sm">
+                            <i class="fa-solid fa-award text-brand-pink text-xl mb-1"></i>
+                            <h4 class="font-bold text-xs text-brand-navy">خبرة ومهارة</h4>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <button onclick="openBookingModal()" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-brand-pink hover:bg-brand-pink-dark text-white font-extrabold text-lg px-8 py-4 rounded-2xl shadow-xl shadow-brand-pink/30 hover:-translate-y-1 transition-all">
+                            <i class="fa-solid fa-calendar-check text-xl"></i>
+                            <span>احجز موعدك الآن</span>
+                            <i class="fa-solid fa-arrow-left text-sm mr-1"></i>
+                        </button>
+                        <p class="text-xs text-slate-500 font-semibold mt-2">
+                            سريع - سهل - تأكيد فوري على واتساب
+                        </p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 relative flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <div class="absolute -inset-4 bg-gradient-to-tr from-brand-pink/20 to-blue-500/20 rounded-3xl blur-2xl opacity-70"></div>
+                        <div class="relative bg-gradient-to-b from-brand-pink-light/50 to-white rounded-3xl p-3 border-2 border-brand-pink/20 shadow-2xl">
+                            <!-- ضع صورة الطبيب الواقعية هنا: assets/images/doctor-hero.png -->
+                            <img src="assets/images/doctor-hero.png" onerror="this.src='https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=800&auto=format&fit=crop&q=80'" alt="د. عبد الرحمن الحامولي" class="w-full h-[420px] object-cover rounded-2xl shadow-inner">
+                            <div class="absolute -bottom-4 -left-4 bg-white border border-slate-100 p-3 rounded-2xl shadow-xl flex items-center gap-3 max-w-[210px]">
+                                <div class="w-11 h-11 rounded-full bg-brand-pink-light text-brand-pink flex items-center justify-center font-bold text-xl">
+                                    <i class="fa-solid fa-heart"></i>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-xs font-bold text-slate-800">Your Smile</p>
+                                    <p class="text-[11px] font-semibold text-brand-pink">Our Passion</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <section class="bg-white border-y border-slate-200/80 py-8 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="space-y-1">
+                    <div class="text-brand-pink text-2xl font-black flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-users"></i>
+                        <span>+5,000</span>
+                    </div>
+                    <p class="text-slate-600 font-bold text-sm">مريض سعيد</p>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-brand-pink text-2xl font-black flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-star"></i>
+                        <span>+10</span>
+                    </div>
+                    <p class="text-slate-600 font-bold text-sm">سنوات خبرة</p>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-brand-pink text-2xl font-black flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-hospital"></i>
+                        <span>متكاملة</span>
+                    </div>
+                    <p class="text-slate-600 font-bold text-sm">خدمات في مكان واحد</p>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-brand-pink text-2xl font-black flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>مميز</span>
+                    </div>
+                    <p class="text-slate-600 font-bold text-sm">موقع وسهل الوصول</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES (8 Services) -->
+    <section id="services" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="text-xs uppercase tracking-widest font-extrabold text-brand-pink">OUR SERVICES</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-brand-navy mt-1">خدماتنا</h2>
+                <p class="text-slate-500 font-medium mt-2">كل ما تحتاجه لابتسامة صحية وجميلة تحت إشراف طبي متخصص</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                <!-- S1 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="h-36 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=500&auto=format&fit=crop&q=80" alt="تقويم الأسنان" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h3 class="font-bold text-base text-brand-navy">تقويم الأسنان</h3>
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0">
+                        <button onclick="openBookingWithService('تقويم الأسنان')" class="w-full bg-brand-pink hover:bg-brand-pink-dark text-white text-xs font-bold py-2.5 px-4 rounded-xl transition-colors">
+                            احجز الخدمة
+                        </button>
+                    </div>
+                </div>
+                <!-- S2 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="h-36 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=500&auto=format&fit=crop&q=80" alt="تجميل الأسنان" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h3 class="font-bold text-base text-brand-navy">تجميل الأسنان</h3>
+                            <span class="text-[11px] text-slate-500 block">(هوليوود سمايل)</span>
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0">
+                        <button onclick="openBookingWithService('تجميل الأسنان (هوليوود سمايل)')" class="w-full bg-brand-pink hover:bg-brand-pink-dark text-white text-xs font-bold py-2.5 px-4 rounded-xl transition-colors">
+                            احجز الخدمة
+                        </button>
+                    </div>
+                </div>
+                <!-- S3 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="h-36 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=500&auto=format&fit=crop&q=80" alt="زراعة الأسنان" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h3 class="font-bold text-base text-brand-navy">زراعة الأسنان</h3>
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0">
+                        <button onclick="openBookingWithService('زراعة الأسنان')" class="w-full bg-brand-pink hover:bg-brand-pink-dark text-white text-xs font-bold py-2.5 px-4 rounded-xl transition-colors">
+                            احجز الخدمة
+                        </button>
+                    </div>
+                </div>
+                <!-- S4 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="h-36 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=500&auto=format&fit=crop&q=80" alt="تركيبات الأسنان" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h3 class="font-bold text-base text-brand-navy">تركيبات الأسنان</h3>
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0">
+                        <button onclick="openBookingWithService('تركيبات الأسنان')" class="w-full bg-brand-pink hover:bg-brand-pink-dark text-white text-xs font-bold py-2.5 px-4 rounded-xl transition-colors">
+                            احجز الخدمة
+                        </button>
+                    </div>
+                </div>
+                <!-- S5 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="h-36 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?w=500&auto=format&fit=crop&q=80" alt="علاج العصب" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h3 class="font-bold text-base text-brand-navy">علاج العصب</h3>
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0">
+                        <button onclick="openBookingWithService('علاج العصب')" class="w-full bg-brand-pink hover:bg-brand-pink-dark text-white text-xs font-bold py-2.5 px-4 rounded-xl transition-colors">
+                            احجز الخدمة
+                        </button>
+                    </div>
+                </div>
+                <!-- S6 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="h-36 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=500&auto=format&fit=crop&q=80" alt="حشوات الأسنان" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h3 class="font-bold text-base text-brand-navy">حشوات الأسنان</h3>
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0">
+                        <button onclick="openBookingWithService('حشوات الأسنان')" class="w-full bg-brand-pink hover:bg-brand-pink-dark text-white text-xs font-bold py-2.5 px-4 rounded-xl transition-colors">
+                            احجز الخدمة
+                        </button>
+                    </div>
+                </div>
+                <!-- S7 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="h-36 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=500&auto=format&fit=crop&q=80" alt="تنظيف وتلميع الأسنان" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h3 class="font-bold text-base text-brand-navy">تنظيف وتلميع الأسنان</h3>
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0">
+                        <button onclick="openBookingWithService('تنظيف وتلميع الأسنان')" class="w-full bg-brand-pink hover:bg-brand-pink-dark text-white text-xs font-bold py-2.5 px-4 rounded-xl transition-colors">
+                            احجز الخدمة
+                        </button>
+                    </div>
+                </div>
+                <!-- S8 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="h-36 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=500&auto=format&fit=crop&q=80" alt="خلع الأسنان" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h3 class="font-bold text-base text-brand-navy">خلع الأسنان</h3>
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0">
+                        <button onclick="openBookingWithService('خلع الأسنان')" class="w-full bg-brand-pink hover:bg-brand-pink-dark text-white text-xs font-bold py-2.5 px-4 rounded-xl transition-colors">
+                            احجز الخدمة
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION (Updated with Doctor Name & Title) -->
+    <section id="about" class="py-20 bg-white border-b border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5 relative flex justify-center">
+                    <div class="relative w-full max-w-sm">
+                        <div class="rounded-3xl overflow-hidden border-4 border-slate-100 shadow-xl bg-slate-50">
+                            <!-- ضع صورة الطبيب الواقعية هنا: assets/images/doctor-about.png -->
+                            <img src="assets/images/doctor-about.png" onerror="this.src='https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=800&auto=format&fit=crop&q=80'" alt="د. عبد الرحمن الحامولي" class="w-full h-[400px] object-cover">
+                        </div>
+                        <div class="absolute -bottom-4 right-6 bg-white p-3 rounded-2xl shadow-lg border border-slate-100 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-pink text-white flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-stethoscope"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-slate-800">The Perfection</p>
+                                <p class="text-[11px] text-brand-pink font-semibold">Our Passion</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-right">
+                    <div>
+                        <span class="text-xs uppercase tracking-widest font-extrabold text-brand-pink">ABOUT US</span>
+                        <h2 class="text-3xl sm:text-4xl font-black text-brand-navy mt-1">د. عبد الرحمن الحامولي</h2>
+                        <p class="text-brand-pink font-bold text-base mt-1">أخصائي طب وتجميل وجراحة الفم والأسنان</p>
+                    </div>
+
+                    <p class="text-slate-600 leading-relaxed text-base italic bg-slate-50 p-4 rounded-2xl border-r-4 border-brand-pink">
+                        "نحن نؤمن أن كل ابتسامة تحكي قصة .. وهدفنا دائماً أن نكون جزءاً جميلاً من قصتك."
+                    </p>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                        <div class="p-3 bg-slate-50 rounded-2xl border border-slate-200/70 text-center">
+                            <i class="fa-solid fa-sparkles text-brand-pink text-xl mb-1"></i>
+                            <h4 class="font-bold text-xs text-brand-navy">الاهتمام بالتفاصيل</h4>
+                            <p class="text-[11px] text-slate-500">لأفضل نتيجة</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-2xl border border-slate-200/70 text-center">
+                            <i class="fa-solid fa-microscope text-brand-pink text-xl mb-1"></i>
+                            <h4 class="font-bold text-xs text-brand-navy">أحدث التقنيات</h4>
+                            <p class="text-[11px] text-slate-500">والأجهزة الحديثة</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-2xl border border-slate-200/70 text-center">
+                            <i class="fa-solid fa-couch text-brand-pink text-xl mb-1"></i>
+                            <h4 class="font-bold text-xs text-brand-navy">تجربة مريحة</h4>
+                            <p class="text-[11px] text-slate-500">بدون ألم وقلق</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-2xl border border-slate-200/70 text-center">
+                            <i class="fa-solid fa-notes-medical text-brand-pink text-xl mb-1"></i>
+                            <h4 class="font-bold text-xs text-brand-navy">متابعة دقيقة</h4>
+                            <p class="text-[11px] text-slate-500">لكل حالة</p>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <button onclick="openBookingModal()" class="inline-flex items-center gap-2 bg-brand-pink hover:bg-brand-pink-dark text-white font-bold px-7 py-3.5 rounded-2xl shadow-lg shadow-brand-pink/20 transition-all">
+                            <span>احجز استشارتك مع الطبيب</span>
+                            <i class="fa-solid fa-arrow-left text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- BEFORE & AFTER SLIDER -->
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-xs uppercase tracking-widest font-extrabold text-brand-pink">SMILE MAKEOVER</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-brand-navy mt-1">قبل وبعد</h2>
+                <p class="text-slate-500 font-medium mt-2">بعض من حالاتنا الحقيقية .. اسحب المؤشر لمشاهدة التحول بنفسك</p>
+            </div>
+
+            <div class="comparison-container" id="comparisonSlider">
+                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=900&auto=format&fit=crop&q=80" alt="بعد العلاج" class="comparison-image">
+                <span class="absolute bottom-4 left-4 bg-emerald-600/90 text-white font-bold text-xs px-3 py-1 rounded-full shadow z-10">بعد العلاج</span>
+
+                <div class="comparison-overlay" id="comparisonOverlay">
+                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=900&auto=format&fit=crop&q=80" alt="قبل العلاج">
+                    <span class="absolute bottom-4 right-4 bg-slate-800/90 text-white font-bold text-xs px-3 py-1 rounded-full shadow z-10">قبل العلاج</span>
+                </div>
+
+                <div class="comparison-slider-handle" id="sliderHandle">
+                    <div class="comparison-button">
+                        <i class="fa-solid fa-arrows-left-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="reviews" class="py-20 bg-white border-y border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs uppercase tracking-widest font-extrabold text-brand-pink">TESTIMONIALS</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-brand-navy mt-1">آراء مرضانا</h2>
+                <p class="text-slate-500 font-medium mt-2">ثقتكم ورضاكم هي أكبر دافع لنا لتقديم أفضل رعاية طبية</p>
+            </div>
+
+            <div class="relative max-w-5xl mx-auto">
+                <div class="overflow-hidden">
+                    <div class="testimonial-track" id="testimonialTrack">
+                        <div class="w-full md:w-1/3 flex-shrink-0 px-3">
+                            <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 h-full flex flex-col justify-between">
+                                <p class="text-slate-700 text-sm leading-relaxed">
+                                    "خدمة ممتازة واهتمام كبير بالتفاصيل .. شكراً دكتور عبد الرحمن على المعاملة الراقية والنتيجة الممتازة."
+                                </p>
+                                <div class="flex items-center gap-3 pt-4 border-t border-slate-200/60 mt-4">
+                                    <div class="w-9 h-9 rounded-full bg-brand-pink-light text-brand-pink font-bold flex items-center justify-center text-sm">أ</div>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-brand-navy">أحمد محمد</h4>
+                                        <span class="text-[11px] text-slate-400">تقويم أسنان</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-full md:w-1/3 flex-shrink-0 px-3">
+                            <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 h-full flex flex-col justify-between">
+                                <p class="text-slate-700 text-sm leading-relaxed">
+                                    "التجربة كانت مريحة جداً وبدون أي ألم والنتيجة فاقت توقعاتي تماماً، العيادة غاية في النظافة والتعقيم."
+                                </p>
+                                <div class="flex items-center gap-3 pt-4 border-t border-slate-200/60 mt-4">
+                                    <div class="w-9 h-9 rounded-full bg-brand-pink-light text-brand-pink font-bold flex items-center justify-center text-sm">س</div>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-brand-navy">سارة علي</h4>
+                                        <span class="text-[11px] text-slate-400">هوليوود سمايل</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-full md:w-1/3 flex-shrink-0 px-3">
+                            <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 h-full flex flex-col justify-between">
+                                <p class="text-slate-700 text-sm leading-relaxed">
+                                    "أفضل عيادة تعاملت معها من حيث الجودة والاحترافية والالتزام بالمواعيد، أنصح بها بشدة."
+                                </p>
+                                <div class="flex items-center gap-3 pt-4 border-t border-slate-200/60 mt-4">
+                                    <div class="w-9 h-9 rounded-full bg-brand-pink-light text-brand-pink font-bold flex items-center justify-center text-sm">م</div>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-brand-navy">محمود حسن</h4>
+                                        <span class="text-[11px] text-slate-400">زراعة وتركيبات</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-center gap-4 mt-8">
+                    <button onclick="prevTestimonial()" class="w-10 h-10 rounded-full border border-slate-200 bg-white hover:bg-brand-pink hover:text-white transition-colors flex items-center justify-center shadow-sm">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                    <button onclick="nextTestimonial()" class="w-10 h-10 rounded-full border border-slate-200 bg-white hover:bg-brand-pink hover:text-white transition-colors flex items-center justify-center shadow-sm">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & LOCATION -->
+    <section id="contact" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <div class="lg:col-span-5 space-y-6">
+                    <div>
+                        <span class="text-xs uppercase tracking-widest font-extrabold text-brand-pink">LOCATION & CONTACT</span>
+                        <h2 class="text-3xl font-black text-brand-navy mt-1">موقع العيادة وتواصل معنا</h2>
+                        <p class="text-slate-500 font-medium mt-2">نسعد باستقبالكم والإجابة على كافة استفساراتكم</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4 p-4 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                            <div class="w-10 h-10 rounded-xl bg-brand-pink-light text-brand-pink flex items-center justify-center flex-shrink-0 text-lg">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-brand-navy">العنوان بالتفصيل</h4>
+                                <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                                    المحور المركزي - امام سيتي سكيب - عمارة 7 اعلى معرض rossini - الدور الاول
+                                </p>
+                                <a href="https://maps.app.goo.gl/Y8HMJRYY4ocNoVn9A?g_st=aw" target="_blank" onclick="trackEvent('View_Google_Maps')" class="inline-flex items-center gap-1 text-brand-pink font-bold text-xs mt-2 hover:underline">
+                                    <span>افتح على خرائط Google</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                            <div class="w-10 h-10 rounded-xl bg-brand-pink-light text-brand-pink flex items-center justify-center flex-shrink-0 text-lg">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-brand-navy">مواعيد العمل</h4>
+                                <p class="text-xs text-slate-600 mt-1">يومياً من 10:00 صباحاً حتى 10:00 مساءً</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-emerald-50 rounded-2xl border border-emerald-200 shadow-sm flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-500 text-white flex items-center justify-center text-lg">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-emerald-900">محادثة واتساب فورية</h4>
+                                    <p class="text-xs text-emerald-700">201030747765</p>
+                                </div>
+                            </div>
+                            <a href="https://wa.me/201030747765?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%B9%D9%8A%D8%A7%D8%AF%D8%A9%20The%20Perfection%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%D9%83%D9%85" target="_blank" onclick="trackEvent('WhatsApp_Click_Direct')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-2 px-4 rounded-xl transition-colors">
+                                راسلنا الآن
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <div class="w-full h-80 sm:h-96 rounded-2xl overflow-hidden border-2 border-slate-200 shadow-md">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3455.938830722136!2d30.941328!3d29.981155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDU4JzUyLjIiTiAzMMKwNTYnMjguOCJF!5e0!3m2!1sen!2seg!4v1650000000000!5m2!1sen!2seg" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-navy text-slate-400 py-10 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <h3 class="text-white font-black text-xl">The Perfection Dental Clinic</h3>
+            <p class="text-xs text-slate-400 max-w-md mx-auto">
+                د. عبد الرحمن الحامولي - أخصائي طب وتجميل وجراحة الفم والأسنان. ابتسامتك تستحق الأفضل دائماً.
+            </p>
+            <p class="text-xs text-slate-500 pt-4 border-t border-slate-800">
+                جميع الحقوق محفوظة &copy; 2026 - The Perfection Dental Clinic
+            </p>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP -->
+    <a href="https://wa.me/201030747765?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%B9%D9%8A%D8%A7%D8%AF%D8%A9%20The%20Perfection%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%D9%83%D9%85" 
+       target="_blank" 
+       onclick="trackEvent('WhatsApp_Floating_Click')" 
+       class="fixed bottom-6 left-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- MULTI-STEP BOOKING MODAL -->
+    <div id="bookingModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-900/60 modal-blur flex items-center justify-center p-4">
+        <div class="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-100">
+            
+            <div class="bg-gradient-to-r from-brand-navy to-slate-900 text-white p-6 relative text-center">
+                <button onclick="closeBookingModal()" class="absolute top-5 left-5 text-slate-400 hover:text-white text-xl">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="w-12 h-12 mx-auto rounded-full bg-brand-pink/20 text-brand-pink flex items-center justify-center text-xl mb-2">
+                    <i class="fa-regular fa-calendar-check"></i>
+                </div>
+                <h3 class="font-extrabold text-2xl text-white">احجز موعدك الآن</h3>
+                <p class="text-xs text-slate-300 mt-1">عيادة The Perfection - د. عبد الرحمن الحامولي</p>
+            </div>
+
+            <!-- Stepper Progress -->
+            <div class="flex items-center justify-between px-8 py-4 bg-slate-50 border-b border-slate-200">
+                <div class="flex flex-col items-center">
+                    <div id="step1Dot" class="w-8 h-8 rounded-full bg-brand-pink text-white font-bold text-xs flex items-center justify-center shadow">1</div>
+                    <span class="text-[11px] font-bold text-slate-600 mt-1">اختر الخدمة</span>
+                </div>
+                <div id="step1Line" class="flex-1 h-1 bg-slate-200 mx-2 rounded"></div>
+                <div class="flex flex-col items-center">
+                    <div id="step2Dot" class="w-8 h-8 rounded-full bg-slate-200 text-slate-500 font-bold text-xs flex items-center justify-center">2</div>
+                    <span class="text-[11px] font-bold text-slate-400 mt-1">بياناتك</span>
+                </div>
+                <div id="step2Line" class="flex-1 h-1 bg-slate-200 mx-2 rounded"></div>
+                <div class="flex flex-col items-center">
+                    <div id="step3Dot" class="w-8 h-8 rounded-full bg-slate-200 text-slate-500 font-bold text-xs flex items-center justify-center">3</div>
+                    <span class="text-[11px] font-bold text-slate-400 mt-1">تأكيد الحجز</span>
+                </div>
+            </div>
+
+            <div class="p-6">
+                <!-- STEP 1 -->
+                <div id="step1Container" class="space-y-4">
+                    <p class="text-sm font-bold text-slate-700">اختر الخدمة المطلوبة:</p>
+                    <div class="space-y-2 max-h-72 overflow-y-auto pr-1">
+                        <label class="flex items-center justify-between p-3 rounded-2xl border border-slate-200 hover:border-brand-pink cursor-pointer transition-all">
+                            <span class="font-bold text-sm text-slate-800">تقويم الأسنان</span>
+                            <input type="radio" name="selectedService" value="تقويم الأسنان" checked class="accent-brand-pink w-4 h-4">
+                        </label>
+                        <label class="flex items-center justify-between p-3 rounded-2xl border border-slate-200 hover:border-brand-pink cursor-pointer transition-all">
+                            <span class="font-bold text-sm text-slate-800">تجميل الأسنان (هوليوود سمايل)</span>
+                            <input type="radio" name="selectedService" value="تجميل الأسنان (هوليوود سمايل)" class="accent-brand-pink w-4 h-4">
+                        </label>
+                        <label class="flex items-center justify-between p-3 rounded-2xl border border-slate-200 hover:border-brand-pink cursor-pointer transition-all">
+                            <span class="font-bold text-sm text-slate-800">زراعة الأسنان</span>
+                            <input type="radio" name="selectedService" value="زراعة الأسنان" class="accent-brand-pink w-4 h-4">
+                        </label>
+                        <label class="flex items-center justify-between p-3 rounded-2xl border border-slate-200 hover:border-brand-pink cursor-pointer transition-all">
+                            <span class="font-bold text-sm text-slate-800">حشوات الأسنان</span>
+                            <input type="radio" name="selectedService" value="حشوات الأسنان" class="accent-brand-pink w-4 h-4">
+                        </label>
+                        <label class="flex items-center justify-between p-3 rounded-2xl border border-slate-200 hover:border-brand-pink cursor-pointer transition-all">
+                            <span class="font-bold text-sm text-slate-800">علاج العصب</span>
+                            <input type="radio" name="selectedService" value="علاج العصب" class="accent-brand-pink w-4 h-4">
+                        </label>
+                        <label class="flex items-center justify-between p-3 rounded-2xl border border-slate-200 hover:border-brand-pink cursor-pointer transition-all">
+                            <span class="font-bold text-sm text-slate-800">تنظيف وتلميع الأسنان</span>
+                            <input type="radio" name="selectedService" value="تنظيف وتلميع الأسنان" class="accent-brand-pink w-4 h-4">
+                        </label>
+                        <label class="flex items-center justify-between p-3 rounded-2xl border border-slate-200 hover:border-brand-pink cursor-pointer transition-all">
+                            <span class="font-bold text-sm text-slate-800">تركيبات الأسنان</span>
+                            <input type="radio" name="selectedService" value="تركيبات الأسنان" class="accent-brand-pink w-4 h-4">
+                        </label>
+                        <label class="flex items-center justify-between p-3 rounded-2xl border border-slate-200 hover:border-brand-pink cursor-pointer transition-all">
+                            <span class="font-bold text-sm text-slate-800">خلع الأسنان</span>
+                            <input type="radio" name="selectedService" value="خلع الأسنان" class="accent-brand-pink w-4 h-4">
+                        </label>
+                    </div>
+                    <div class="pt-4">
+                        <button onclick="goToStep2()" class="w-full flex items-center justify-center gap-2 bg-brand-pink hover:bg-brand-pink-dark text-white font-bold py-3.5 rounded-2xl shadow-lg transition-all">
+                            <span>التالي</span>
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 2 -->
+                <div id="step2Container" class="hidden space-y-4">
+                    <p class="text-sm font-bold text-slate-700">بيانات الحجز:</p>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">الاسم بالكامل *</label>
+                        <input type="text" id="patientName" placeholder="مثال: أحمد محمد" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-brand-pink focus:outline-none text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">رقم الهاتف (واتساب) *</label>
+                        <input type="tel" id="patientPhone" placeholder="01xxxxxxxxx" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-brand-pink focus:outline-none text-sm">
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">اليوم المناسب *</label>
+                            <input type="date" id="bookingDate" class="w-full px-3 py-3 rounded-xl border border-slate-200 focus:border-brand-pink focus:outline-none text-xs">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">الفترة المناسبة *</label>
+                            <select id="bookingSlot" class="w-full px-3 py-3 rounded-xl border border-slate-200 focus:border-brand-pink focus:outline-none text-xs">
+                                <option value="صباحاً (من 10 - 2)">صباحاً (10 - 2)</option>
+                                <option value="مساءً (من 2 - 6)">مساءً (2 - 6)</option>
+                                <option value="مساءً (من 6 - 10)">مساءً (6 - 10)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">ملاحظات إضافية (اختياري)</label>
+                        <textarea id="patientNotes" rows="2" placeholder="أي تفاصيل تود إخبارنا بها .." class="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-brand-pink focus:outline-none text-xs"></textarea>
+                    </div>
+                    <div class="flex items-center gap-3 pt-2">
+                        <button onclick="goToStep1()" class="w-1/3 py-3.5 border border-slate-200 rounded-2xl text-xs font-bold text-slate-600">السابق</button>
+                        <button onclick="submitBooking()" class="w-2/3 flex items-center justify-center gap-2 bg-brand-pink hover:bg-brand-pink-dark text-white font-bold py-3.5 rounded-2xl shadow-lg text-sm">
+                            <i class="fa-regular fa-calendar-check"></i>
+                            <span>تأكيد الحجز</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 3 -->
+                <div id="step3Container" class="hidden text-center py-6 space-y-5">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-2xl font-black text-brand-navy">تم استلام طلب حجزك بنجاح!</h4>
+                        <p class="text-xs text-slate-500 mt-2 max-w-xs mx-auto">
+                            سيتم التواصل معك فورياً عبر واتساب لتأكيد الموعد النهائي وتفاصيل الزيارة.
+                        </p>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 text-right text-xs space-y-2">
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">الخدمة:</span>
+                            <span id="summaryService" class="font-bold text-slate-800"></span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">المريض:</span>
+                            <span id="summaryName" class="font-bold text-slate-800"></span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">الموعد:</span>
+                            <span id="summaryTime" class="font-bold text-slate-800"></span>
+                        </div>
+                    </div>
+                    <div class="space-y-3 pt-2">
+                        <a id="whatsappSubmitBtn" href="#" target="_blank" class="w-full flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3.5 rounded-2xl shadow-lg text-sm">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>تواصل الآن على واتساب</span>
+                        </a>
+                        <button onclick="closeBookingModal()" class="w-full py-2.5 text-xs font-bold text-slate-500 hover:text-slate-800">
+                            العودة للرئيسية
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Logic Script -->
+    <script src="js/app.js"></script>
+</body>
+</html>
