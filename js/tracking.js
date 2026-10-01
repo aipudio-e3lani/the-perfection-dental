@@ -1,7 +1,7 @@
 // === Tracking Configuration ===
-const META_PIXEL_ID = 'YOUR_PIXEL_ID_HERE';       // ضع Pixel ID هنا
-const GOOGLE_TAG_ID = 'G-XXXXXXXXXX';             // ضع Google Tag ID هنا
-const CLARITY_ID = 'YOUR_CLARITY_ID_HERE';         // ضع Clarity ID هنا
+const META_PIXEL_ID = 'YOUR_PIXEL_ID_HERE';       // ضع Meta Pixel ID هنا عند توفره
+const GOOGLE_TAG_ID = 'G-XXXXXXXXXX';             // ضع Google Tag ID هنا عند توفره
+const CLARITY_ID = 'yqzkpoghi1';                   // تم تفعيل Microsoft Clarity
 
 // 1. Init Meta Pixel
 if (META_PIXEL_ID !== 'YOUR_PIXEL_ID_HERE') {
@@ -31,15 +31,13 @@ if (GOOGLE_TAG_ID !== 'G-XXXXXXXXXX') {
 }
 
 // 3. Init Microsoft Clarity
-if (CLARITY_ID !== 'YOUR_CLARITY_ID_HERE') {
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", CLARITY_ID);
-}
+(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", CLARITY_ID);
 
-// Centralized Event Dispatcher
+// Centralized Event Dispatcher (لتسجيل النقرات والتحويلات داخل لوحة Clarity)
 function trackEvent(eventName, params = {}) {
     console.log(`[Event Triggered]: ${eventName}`, params);
     
@@ -51,8 +49,8 @@ function trackEvent(eventName, params = {}) {
     if (typeof gtag === 'function' && GOOGLE_TAG_ID !== 'G-XXXXXXXXXX') {
         gtag('event', eventName, params);
     }
-    // Clarity
-    if (typeof clarity === 'function' && CLARITY_ID !== 'YOUR_CLARITY_ID_HERE') {
+    // Clarity Custom Event
+    if (typeof clarity === 'function') {
         clarity('event', eventName);
     }
 }
