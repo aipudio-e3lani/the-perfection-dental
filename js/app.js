@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Mobile Menu
+    // 1. Mobile Menu Toggle
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     if (mobileMenuBtn && mobileMenu) {
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const step2Line = document.getElementById('step2Line');
 
     let bookingState = {
-        service: 'تقويم الأسنان',
+        service: 'خلع ضرس العقل غير الجراحي (عرض 1500 ج)',
         name: '',
         phone: '',
         date: '',
@@ -30,11 +30,13 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     window.openBookingModal = function() {
+        if (!bookingModal) return;
         bookingModal.classList.remove('hidden');
         window.goToStep1();
         if (typeof trackEvent === 'function') trackEvent('InitiateBookingModal');
     };
 
+    // حجز خدمة عادية
     window.openBookingWithService = function(serviceName) {
         window.openBookingModal();
         const serviceRadios = document.querySelectorAll('input[name="selectedService"]');
@@ -45,8 +47,23 @@ document.addEventListener('DOMContentLoaded', () => {
         window.goToStep2();
     };
 
+    // حجز عرض محدد من عروض أكتوبر وفتح الخطوة الثانية مباشرة
+    window.openBookingWithOffer = function(offerTitle) {
+        window.openBookingModal();
+        let found = false;
+        const serviceRadios = document.querySelectorAll('input[name="selectedService"]');
+        serviceRadios.forEach(radio => {
+            if (radio.value === offerTitle) {
+                radio.checked = true;
+                found = true;
+            }
+        });
+        bookingState.service = offerTitle;
+        window.goToStep2();
+    };
+
     window.closeBookingModal = function() {
-        bookingModal.classList.add('hidden');
+        if (bookingModal) bookingModal.classList.add('hidden');
     };
 
     window.goToStep1 = function() {
@@ -86,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const notes = document.getElementById('patientNotes').value.trim();
 
         if (!name || !phone || !date) {
-            alert('يرجى ملء جميع الحقول المطلوبة (الاسم، الهاتف، التاريخ)');
+            alert('يرجى ملء جميع الحقول المطلوبة (الاسم، الهاتف، التاريخ) لتثبيت العرض');
             return;
         }
 
@@ -101,26 +118,30 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('summaryTime').innerText = `${bookingState.date} (${bookingState.slot})`;
 
         const clinicWhatsApp = '201030747765';
-        let msg = `*طلب حجز موعد جديد - عيادة The Perfection*%0A`;
-        msg += `*د. عبد الرحمن الحامولي*%0A`;
+        
+        // رسالة واتساب منسقة بدقة مطابقة لإعلانات أكتوبر
+        let msg = `*طلب حجز موعد - عروض أكتوبر الحصرية*%0A`;
+        msg += `*عيادة The Perfection - د. عبد الرحمن الحامولي*%0A`;
         msg += `-------------------------%0A`;
+        msg += `🦷 *الخدمة / العرض:* ${encodeURIComponent(bookingState.service)}%0A`;
         msg += `👤 *اسم المريض:* ${encodeURIComponent(name)}%0A`;
         msg += `📞 *رقم الهاتف:* ${encodeURIComponent(phone)}%0A`;
-        msg += `🦷 *الخدمة المطلوبة:* ${encodeURIComponent(bookingState.service)}%0A`;
         msg += `📅 *اليوم المقترح:* ${encodeURIComponent(date)}%0A`;
         msg += `⏰ *الفترة:* ${encodeURIComponent(slot)}%0A`;
         if (notes) msg += `📝 *ملاحظات:* ${encodeURIComponent(notes)}%0A`;
         msg += `-------------------------%0A`;
-        msg += `أرجو تأكيد الموعد. شكراً جزيلاً.`;
+        msg += `أرجو تأكيد الموعد وتثبيت سعر العرض. شكراً جزيلاً.`;
 
         const whatsappUrl = `https://wa.me/${clinicWhatsApp}?text=${msg}`;
-        document.getElementById('whatsappSubmitBtn').href = whatsappUrl;
+        const submitBtn = document.getElementById('whatsappSubmitBtn');
+        if (submitBtn) submitBtn.href = whatsappUrl;
 
         if (typeof trackEvent === 'function') {
             trackEvent('Lead', {
                 service: bookingState.service,
                 patient_name: name,
-                patient_phone: phone
+                patient_phone: phone,
+                campaign: 'October_Offers'
             });
         }
 
@@ -139,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 600);
     };
 
-    // Set Default Min Date
+    // ضبط الحد الأدنى للتاريخ على اليوم الحالي
     const today = new Date().toISOString().split('T')[0];
     const dateInput = document.getElementById('bookingDate');
     if (dateInput) {
@@ -147,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dateInput.value = today;
     }
 
-    // 3. Before & After Slider
+    // 3. Before & After Slider (سلايدر مقارنة الحالات التفاعلي)
     const sliderBox = document.getElementById('comparisonSlider');
     const overlay = document.getElementById('comparisonOverlay');
     const handle = document.getElementById('sliderHandle');
@@ -174,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('touchmove', (e) => { if (isSliding) moveSlider(e.touches[0].clientX); });
     }
 
-    // 4. Testimonials Slider
+    // 4. Testimonials Slider (سلايدر آراء المرضى)
     const track = document.getElementById('testimonialTrack');
     let reviewIdx = 0;
     const totalReviews = 3;
