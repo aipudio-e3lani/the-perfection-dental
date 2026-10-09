@@ -26,7 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
         phone: '',
         date: '',
         slot: 'صباحاً (من 10 - 2)',
-        notes: ''
+        notes: '',
+        leadTracked: false // لمنع احتساب الـ Lead مرتين لنفس العميل
     };
 
     window.openBookingModal = function() {
@@ -50,12 +51,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // حجز عرض محدد من عروض أكتوبر وفتح الخطوة الثانية مباشرة
     window.openBookingWithOffer = function(offerTitle) {
         window.openBookingModal();
-        let found = false;
         const serviceRadios = document.querySelectorAll('input[name="selectedService"]');
         serviceRadios.forEach(radio => {
             if (radio.value === offerTitle) {
                 radio.checked = true;
-                found = true;
             }
         });
         bookingState.service = offerTitle;
@@ -95,6 +94,38 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof trackEvent === 'function') trackEvent('BookingStep2_Viewed', { service: bookingState.service });
     };
 
+    // استخراج القيمة المالية المقدرة للعرض لإرسالها لميتا بيكسل بدقة
+    function extractOfferValue(serviceText) {
+        if (serviceText.includes('1500')) return 1500;
+        if (serviceText.includes('2000')) return 2000;
+        if (serviceText.includes('الحشوات')) return 600;
+        if (serviceText.includes('تنظيف')) return 400;
+        return 500; // قيمة تقديرية افتراضية للكشف
+    }
+
+    // دالة إرسال حدث Lead القياسي لـ Meta Pixel
+    function triggerMetaLeadEvent() {
+        if (bookingState.leadTracked) return; // منع التكرار
+        bookingState.leadTracked = true;
+
+        const offerValue = extractOfferValue(bookingState.service);
+
+        if (typeof trackEvent === 'function') {
+            // إرسال الحدث القياسي Lead مع كامل تفاصيل العرض لفيسبوك
+            trackEvent('Lead', {
+                content_name: bookingState.service,
+                content_category: 'Dental Appointment',
+                value: offerValue,
+                currency: 'EGP',
+                patient_name: bookingState.name,
+                patient_phone: bookingState.phone,
+                appointment_date: bookingState.date,
+                appointment_slot: bookingState.slot,
+                campaign: 'October_Offers_2026'
+            });
+        }
+    }
+
     window.submitBooking = function() {
         const name = document.getElementById('patientName').value.trim();
         const phone = document.getElementById('patientPhone').value.trim();
@@ -119,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const clinicWhatsApp = '201030747765';
         
-        // رسالة واتساب منسقة بدقة مطابقة لإعلانات أكتوبر
+        // رسالة واتساب منسقة ومخصصة للحجز
         let msg = `*طلب حجز موعد - عروض أكتوبر الحصرية*%0A`;
         msg += `*عيادة The Perfection - د. عبد الرحمن الحامولي*%0A`;
         msg += `-------------------------%0A`;
@@ -134,17 +165,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const whatsappUrl = `https://wa.me/${clinicWhatsApp}?text=${msg}`;
         const submitBtn = document.getElementById('whatsappSubmitBtn');
-        if (submitBtn) submitBtn.href = whatsappUrl;
-
-        if (typeof trackEvent === 'function') {
-            trackEvent('Lead', {
-                service: bookingState.service,
-                patient_name: name,
-                patient_phone: phone,
-                campaign: 'October_Offers'
-            });
+        
+        if (submitBtn) {
+            submitBtn.href = whatsappUrl;
+            // تفعيل التتبع المباشر لحظة ضغط زر تحويل الواتساب النهائي
+            submitBtn.onclick = function() {
+                triggerMetaLeadEvent();
+            };
         }
 
+        // تسجيل الـ Lead بدقة فور اكتمال تعبئة نموذج الحجز والانتقال للخطوة 3
+        triggerMetaLeadEvent();
+
+        // الانتقال للخطوة 3 (شاشة التأكيد)
         step1Container.classList.add('hidden');
         step2Container.classList.add('hidden');
         step3Container.classList.remove('hidden');
@@ -155,9 +188,10 @@ document.addEventListener('DOMContentLoaded', () => {
         step1Line.className = 'flex-1 h-1 bg-emerald-500 mx-2 rounded';
         step2Line.className = 'flex-1 h-1 bg-emerald-500 mx-2 rounded';
 
+        // فتح واتساب العيادة تلقائياً مع الرسالة بعد مهلة قصيرة
         setTimeout(() => {
             window.open(whatsappUrl, '_blank');
-        }, 600);
+        }, 800);
     };
 
     // ضبط الحد الأدنى للتاريخ على اليوم الحالي
