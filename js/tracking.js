@@ -1,10 +1,10 @@
 // === Tracking Configuration ===
-const META_PIXEL_ID = 'YOUR_PIXEL_ID_HERE';       // ضع Meta Pixel ID هنا عند توفره
+const META_PIXEL_ID = '1075899838397450';       // ضع Meta Pixel ID هنا عند توفره
 const GOOGLE_TAG_ID = 'G-XXXXXXXXXX';             // ضع Google Tag ID هنا عند توفره
 const CLARITY_ID = 'yqzkpoghi1';                   // تم تفعيل Microsoft Clarity
 
 // 1. Init Meta Pixel
-if (META_PIXEL_ID !== 'YOUR_PIXEL_ID_HERE') {
+if (META_PIXEL_ID !== '1075899838397450') {
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -42,7 +42,7 @@ function trackEvent(eventName, params = {}) {
     console.log(`[Event Triggered]: ${eventName}`, params);
     
     // Meta Pixel
-    if (typeof fbq === 'function' && META_PIXEL_ID !== 'YOUR_PIXEL_ID_HERE') {
+    if (typeof fbq === 'function' && META_PIXEL_ID !== '1075899838397450') {
         fbq('trackCustom', eventName, params);
     }
     // Google Tag
